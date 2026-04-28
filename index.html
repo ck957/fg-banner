@@ -8,45 +8,39 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body {
     width: 100%;
-    height: 100%;
     overflow: hidden;
     font-family: -apple-system, BlinkMacSystemFont, "PingFang HK", "Microsoft JhengHei", "Noto Sans HK", sans-serif;
     background: transparent;
   }
 
-  /* ============ 1:1 Square Container ============ */
+  /* ============ Container — 用比例但唔太高 ============ */
   .banner {
     position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1 / 1;       /* 保持正方形 1:1 */
     max-width: 1200px;
     margin: 0 auto;
-
-    /* 淺藍 gradient — 配合上方 2kg 深藍廣告，由淺藍過渡到極淺白藍 */
-    background: linear-gradient(180deg, #DCE7F2 0%, #EAF1F8 50%, #F4F8FC 100%);
-
+    background: linear-gradient(180deg, #C7D8EC 0%, #DDE8F4 50%, #ECF3FA 100%);
     border-radius: 18px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
     box-shadow: 0 4px 20px rgba(31, 56, 100, 0.12);
   }
-
-  /* 裝飾線條 — 城市剪影感（同 2kg 廣告呼應） */
   .banner::before {
     content: "";
     position: absolute;
     inset: 0;
     background:
-      radial-gradient(circle at 15% 90%, rgba(31, 56, 100, 0.05) 0%, transparent 30%),
-      radial-gradient(circle at 85% 90%, rgba(44, 95, 160, 0.04) 0%, transparent 30%);
+      radial-gradient(circle at 15% 90%, rgba(31, 56, 100, 0.08) 0%, transparent 30%),
+      radial-gradient(circle at 85% 90%, rgba(44, 95, 160, 0.06) 0%, transparent 30%);
     pointer-events: none;
   }
 
-  /* ============ Top: Headline ============ */
+  /* ============ TOP — 縮細 ============ */
   .top-section {
     flex: 0 0 auto;
-    padding: 6% 6% 4% 6%;
+    padding: 4% 5% 2.5% 5%;
     text-align: center;
     position: relative;
     z-index: 2;
@@ -55,11 +49,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    margin-bottom: 14px;
+    gap: 10px;
+    margin-bottom: 10px;
   }
   .brand-fg {
-    font-size: 2.2rem;
+    font-size: 1.9rem;
     font-weight: 800;
     color: #1F3864;
     letter-spacing: 1px;
@@ -67,53 +61,59 @@
   }
   .brand-divider {
     width: 1px;
-    height: 32px;
+    height: 28px;
     background: #1F3864;
     opacity: 0.3;
   }
   .brand-zh {
-    font-size: 1.05rem;
+    font-size: 0.95rem;
     font-weight: 700;
     color: #1F3864;
-    line-height: 1.3;
+    line-height: 1.2;
     text-align: left;
   }
-  .brand-zh span { display: block; font-size: 0.78rem; font-weight: 500; color: #2c5fa0; margin-top: 2px; }
+  .brand-zh span {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 500;
+    color: #2c5fa0;
+    margin-top: 1px;
+  }
 
   .geo-pills {
     display: flex;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     flex-wrap: wrap;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
   }
   .pill {
-    padding: 4px 14px;
+    padding: 3px 11px;
     background: #1F3864;
     color: #ffffff;
     border-radius: 999px;
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.5px;
   }
   .pill-gold { background: #C9A95E; color: #1F3864; }
 
   .tagline {
-    font-size: 0.88rem;
+    font-size: 0.82rem;
     color: #1F3864;
     font-weight: 600;
-    line-height: 1.5;
-    margin-bottom: 4px;
+    line-height: 1.4;
+    margin-bottom: 2px;
   }
   .tagline-en {
-    font-size: 0.72rem;
-    color: #6c8db8;
+    font-size: 0.66rem;
+    color: #4a6b9b;
     font-style: italic;
     letter-spacing: 1px;
     text-transform: uppercase;
   }
 
-  /* ============ Middle: Marquee ============ */
+  /* ============ MARQUEE — 密啲 + transparency 處理 ============ */
   .marquee-section {
     flex: 1 1 auto;
     display: flex;
@@ -121,32 +121,33 @@
     overflow: hidden;
     position: relative;
     z-index: 2;
-    padding: 10px 0;
+    padding: 2px 0;
+    min-height: 0;
   }
   .marquee-section::before,
   .marquee-section::after {
     content: "";
     position: absolute;
     top: 0;
-    width: 8%;
+    width: 6%;
     height: 100%;
     z-index: 3;
     pointer-events: none;
   }
   .marquee-section::before {
     left: 0;
-    background: linear-gradient(90deg, #DCE7F2 0%, transparent 100%);
+    background: linear-gradient(90deg, #C7D8EC 0%, transparent 100%);
   }
   .marquee-section::after {
     right: 0;
-    background: linear-gradient(270deg, #F4F8FC 0%, transparent 100%);
+    background: linear-gradient(270deg, #ECF3FA 0%, transparent 100%);
   }
 
   .marquee {
     display: flex;
     align-items: center;
     width: max-content;
-    animation: scroll-left 28s linear infinite;
+    animation: scroll-left 26s linear infinite;
   }
   .marquee:hover { animation-play-state: paused; }
 
@@ -160,73 +161,79 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 0 5%;
+    margin: 0 14px;       /* 由 5% 改到固定 14px → 密好多 */
     flex-shrink: 0;
-    min-width: 140px;
+    min-width: 96px;       /* 由 140 縮到 96 */
   }
   .logo-img {
-    width: 110px;
-    height: 110px;
+    width: 78px;           /* 由 110 縮到 78 */
+    height: 78px;
     object-fit: contain;
-    /* 冇圓圈框，logo 自然展示 */
+
+    /* ★ 透明處理：multiply 將 PNG 殘留白邊融入藍底 ★ */
+    mix-blend-mode: multiply;
+    filter: contrast(1.05);
   }
   .logo-label {
-    margin-top: 8px;
+    margin-top: 4px;
     color: #1F3864;
-    font-size: 0.82rem;
+    font-size: 0.74rem;
     font-weight: 700;
     text-align: center;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
   }
   .logo-sublabel {
-    color: #6c8db8;
-    font-size: 0.66rem;
-    margin-top: 2px;
+    color: #5a7ba8;
+    font-size: 0.6rem;
+    margin-top: 1px;
     font-weight: 500;
+    white-space: nowrap;
   }
 
-  /* ============ Bottom: Footer ============ */
+  /* ============ BOTTOM — compact 一行字 ============ */
   .bottom-section {
     flex: 0 0 auto;
-    padding: 3% 6% 5% 6%;
+    padding: 2% 4% 3.5% 4%;
     text-align: center;
     position: relative;
     z-index: 2;
-    border-top: 1px solid rgba(31, 56, 100, 0.08);
-    background: rgba(255, 255, 255, 0.4);
+    border-top: 1px solid rgba(31, 56, 100, 0.1);
+    background: rgba(255, 255, 255, 0.5);
   }
   .footer-tagline {
-    font-size: 0.78rem;
+    font-size: 0.7rem;
     color: #1F3864;
     font-weight: 600;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
+    line-height: 1.3;
   }
   .footer-urls {
-    font-size: 0.68rem;
-    color: #6c8db8;
-    letter-spacing: 0.5px;
+    font-size: 0.6rem;
+    color: #5a7ba8;
+    letter-spacing: 0.3px;
   }
   .footer-urls a {
     color: #2c5fa0;
     text-decoration: none;
     font-weight: 600;
   }
-  .footer-urls a:hover { color: #C9A95E; }
 
-  /* ============ Mobile / 細螢幕 ============ */
+  /* ============ Mobile adjustments ============ */
   @media (max-width: 600px) {
-    .brand-fg { font-size: 1.7rem; }
-    .brand-divider { height: 26px; }
-    .brand-zh { font-size: 0.88rem; }
-    .brand-zh span { font-size: 0.7rem; }
-    .pill { font-size: 0.68rem; padding: 3px 10px; }
-    .tagline { font-size: 0.78rem; }
-    .tagline-en { font-size: 0.62rem; }
-    .logo-img { width: 88px; height: 88px; }
-    .logo-label { font-size: 0.74rem; }
-    .logo-sublabel { font-size: 0.58rem; }
-    .footer-tagline { font-size: 0.7rem; }
-    .footer-urls { font-size: 0.6rem; }
+    .brand-fg { font-size: 1.55rem; }
+    .brand-divider { height: 22px; }
+    .brand-zh { font-size: 0.82rem; }
+    .brand-zh span { font-size: 0.62rem; }
+    .pill { font-size: 0.62rem; padding: 2px 9px; }
+    .tagline { font-size: 0.74rem; }
+    .tagline-en { font-size: 0.56rem; }
+    .logo-img { width: 64px; height: 64px; }
+    .logo-label { font-size: 0.66rem; }
+    .logo-sublabel { font-size: 0.54rem; }
+    .logo-item { margin: 0 10px; min-width: 84px; }
+    .footer-tagline { font-size: 0.62rem; }
+    .footer-urls { font-size: 0.54rem; }
   }
 </style>
 </head>
@@ -281,7 +288,7 @@
         <div class="logo-sublabel">海產直購</div>
       </div>
 
-      <!-- 第二套 (重複，無縫循環) -->
+      <!-- 第二套 重複 -->
       <div class="logo-item">
         <img class="logo-img" src="logos/fg.png" alt="FG">
         <div class="logo-label">Forever Gain</div>
@@ -308,12 +315,10 @@
 
   <!-- ===== BOTTOM ===== -->
   <div class="bottom-section">
-    <div class="footer-tagline">長鴻控股 CHG · 專注新西蘭，以多元板塊驅動卓越</div>
+    <div class="footer-tagline">長鴻控股 CHG · 專注新西蘭 · 多元板塊驅動卓越</div>
     <div class="footer-urls">
-      <a href="https://www.fghkholding.com" target="_blank">fghkholding.com</a>
-      &nbsp;·&nbsp;
-      <a href="https://www.chgonz.com" target="_blank">chgonz.com</a>
-      &nbsp;·&nbsp;
+      <a href="https://www.fghkholding.com" target="_blank">fghkholding.com</a> ·
+      <a href="https://www.chgonz.com" target="_blank">chgonz.com</a> ·
       <a href="https://www.nzgoch.com" target="_blank">nzgoch.com</a>
     </div>
   </div>
