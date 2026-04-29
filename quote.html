@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FG 報價參考 · 系統升級中</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang HK", "Noto Sans HK", "Microsoft JhengHei", sans-serif;
+    background: linear-gradient(180deg, #DCE7F2 0%, #EAF1F8 50%, #F4F8FC 100%);
+    min-height: 100vh;
+    padding: 0;
+    color: #1F3864;
+  }
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    background: linear-gradient(180deg, #DCE7F2 0%, #EAF1F8 50%, #F4F8FC 100%);
+    box-shadow: 0 6px 24px rgba(31, 56, 100, 0.18);
+    overflow: hidden;
+  }
+
+  /* ===== Header ===== */
+  .header {
+    background: linear-gradient(135deg, #0a2856 0%, #1F3864 50%, #2c5fa0 100%);
+    color: #ffffff;
+    padding: 28px 24px 24px 24px;
+    text-align: center;
+    position: relative;
+  }
+  .header::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #C9A95E, transparent);
+  }
+  .brand-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .fg-circle {
+    width: 60px; height: 60px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #1F3864;
+    font-weight: 800;
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+  }
+  .brand-text { text-align: left; }
+  .brand-text .en { font-size: 1.05rem; font-weight: 700; }
+  .brand-text .zh { font-size: 0.78rem; opacity: 0.85; margin-top: 2px; }
+
+  /* ===== Notice ===== */
+  .notice {
+    background: rgba(201, 169, 94, 0.18);
+    border: 1px solid rgba(201, 169, 94, 0.45);
+    border-radius: 12px;
+    padding: 18px;
+    margin: 22px 24px 0 24px;
+    text-align: center;
+  }
+  .notice .icon {
+    font-size: 2rem;
+    margin-bottom: 6px;
+  }
+  .notice h2 {
+    color: #1F3864;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .notice p {
+    color: #4a6b9b;
+    font-size: 0.85rem;
+    line-height: 1.5;
+  }
+
+  /* ===== Section title ===== */
+  .section-title {
+    text-align: center;
+    margin: 28px 0 14px 0;
+    color: #1F3864;
+  }
+  .section-title h3 {
+    font-size: 1.25rem;
+    font-weight: 800;
+  }
+  .section-title p {
+    font-size: 0.78rem;
+    color: #5a7ba8;
+    margin-top: 2px;
+  }
+
+  /* ===== Price cards ===== */
+  .price-grid {
+    padding: 0 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .price-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 16px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 10px rgba(31, 56, 100, 0.08);
+    border-left: 4px solid #1F3864;
+  }
+  .price-card.highlight { border-left-color: #C9A95E; background: #FFFCF3; }
+  .price-card.green { border-left-color: #277749; }
+
+  .price-info {
+    flex: 1;
+  }
+  .price-info .service {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1F3864;
+    margin-bottom: 3px;
+  }
+  .price-info .detail {
+    font-size: 0.72rem;
+    color: #6c8db8;
+    line-height: 1.35;
+  }
+  .price-amount {
+    text-align: right;
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+  .price-amount .amount {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #1F3864;
+    line-height: 1;
+  }
+  .price-amount .currency {
+    font-size: 0.62rem;
+    color: #6c8db8;
+    margin-top: 2px;
+    letter-spacing: 0.4px;
+  }
+  .price-card.highlight .amount { color: #C9A95E; }
+  .price-card.green .amount { color: #277749; }
+
+  /* ===== Beyond range note ===== */
+  .beyond {
+    margin: 26px 24px 0 24px;
+    padding: 16px 18px;
+    background: #1F3864;
+    color: #ffffff;
+    border-radius: 14px;
+    text-align: center;
+  }
+  .beyond .arrow {
+    font-size: 1.4rem;
+    margin-bottom: 4px;
+  }
+  .beyond p {
+    font-size: 0.88rem;
+    line-height: 1.4;
+    font-weight: 600;
+  }
+  .beyond .sub {
+    font-size: 0.72rem;
+    opacity: 0.8;
+    margin-top: 4px;
+    font-weight: 400;
+  }
+
+  /* ===== WhatsApp CTA ===== */
+  .cta {
+    margin: 18px 24px 24px 24px;
+    background: #25D366;
+    color: #ffffff;
+    border-radius: 14px;
+    padding: 18px 20px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+    font-weight: 700;
+  }
+  .cta:hover { background: #1eb457; }
+  .cta .icon {
+    width: 32px; height: 32px;
+    background: rgba(255,255,255,0.25);
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+  }
+  .cta .text {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .cta .main {
+    font-size: 1.05rem;
+  }
+  .cta .phone {
+    font-size: 0.78rem;
+    opacity: 0.9;
+    font-weight: 500;
+  }
+
+  /* ===== Footer ===== */
+  .footer {
+    text-align: center;
+    padding: 16px 24px 24px 24px;
+    color: #6c8db8;
+    font-size: 0.62rem;
+    letter-spacing: 0.4px;
+    line-height: 1.6;
+    border-top: 1px solid rgba(31, 56, 100, 0.08);
+    margin-top: 8px;
+  }
+  .footer a { color: #2c5fa0; text-decoration: none; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- Header -->
+  <div class="header">
+    <div class="brand-row">
+      <div class="fg-circle">FG</div>
+      <div class="brand-text">
+        <div class="en">Forever Gain HK</div>
+        <div class="zh">長鴻香港控股 · HK→NZ 物流</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Upgrade notice -->
+  <div class="notice">
+    <div class="icon">⚙️</div>
+    <h2>自動報價系統升級中</h2>
+    <p>暫時提供以下常用重量參考價，<br>實際報價可 WhatsApp 客服查詢</p>
+  </div>
+
+  <!-- Section: Reference prices -->
+  <div class="section-title">
+    <h3>常用重量參考價</h3>
+    <p>香港 → 紐西蘭 · 全包價（已含燃油 / 清關 / 派送）</p>
+  </div>
+
+  <!-- Price cards -->
+  <div class="price-grid">
+
+    <!-- 集運 1kg -->
+    <div class="price-card">
+      <div class="price-info">
+        <div class="service">集運 · 1 kg</div>
+        <div class="detail">多件合運 · 4-7 天到達 · 慳到笑</div>
+      </div>
+      <div class="price-amount">
+        <div class="amount">$528.5</div>
+        <div class="currency">HKD 全包</div>
+      </div>
+    </div>
+
+    <!-- 集運 3kg -->
+    <div class="price-card">
+      <div class="price-info">
+        <div class="service">集運 · 3 kg</div>
+        <div class="detail">多件合運 · 4-7 天到達</div>
+      </div>
+      <div class="price-amount">
+        <div class="amount">$816.18</div>
+        <div class="currency">HKD 全包</div>
+      </div>
+    </div>
+
+    <!-- 快件 PAK 2kg ★ Hook -->
+    <div class="price-card highlight">
+      <div class="price-info">
+        <div class="service">⭐ 快件 · 2 kg</div>
+        <div class="detail">特快直送 · 2-4 天到達 · 一袋一價</div>
+      </div>
+      <div class="price-amount">
+        <div class="amount">$520</div>
+        <div class="currency">HKD 全包</div>
+      </div>
+    </div>
+
+    <!-- 商業快件 21kg -->
+    <div class="price-card green">
+      <div class="price-info">
+        <div class="service">商業快件 · 21 kg</div>
+        <div class="detail">特快 2-4 天 · 商家批貨首選</div>
+      </div>
+      <div class="price-amount">
+        <div class="amount">$2,987</div>
+        <div class="currency">HKD 全包</div>
+      </div>
+    </div>
+
+    <!-- 商業經濟件 21kg -->
+    <div class="price-card">
+      <div class="price-info">
+        <div class="service">商業經濟 · 21 kg</div>
+        <div class="detail">慢線 4-7 天 · 慳更多</div>
+      </div>
+      <div class="price-amount">
+        <div class="amount">$2,512</div>
+        <div class="currency">HKD 全包</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Beyond range -->
+  <div class="beyond">
+    <div class="arrow">↗</div>
+    <p>超出以上重量範圍？</p>
+    <div class="sub">21kg 以上 / 特殊尺寸 / 大宗批貨 — 客服度身報價</div>
+  </div>
+
+  <!-- WhatsApp CTA -->
+  <a href="https://wa.me/85298338840?text=查詢%20HK%20到%20NZ%20運費報價" class="cta">
+    <div class="icon">💬</div>
+    <div class="text">
+      <div class="main">WhatsApp 即時報價</div>
+      <div class="phone">+852 9833 8840</div>
+    </div>
+  </a>
+
+  <!-- Footer -->
+  <div class="footer">
+    FG NZ Trade & Logistics Ltd · NZBN 9429053403940 · Customs 40817549G<br>
+    <a href="https://www.fghkholding.com">fghkholding.com</a> ·
+    <a href="https://www.chgonz.com">chgonz.com</a> ·
+    <a href="https://www.nzgoch.com">nzgoch.com</a><br>
+    本價單已包含所有費用 · 詳情請 WhatsApp 客服查詢<br>
+    © 2026 Forever Gain HK Holding Ltd · v1.0
+  </div>
+
+</div>
+
+</body>
+</html>
