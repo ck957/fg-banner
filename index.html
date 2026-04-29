@@ -40,14 +40,14 @@
 
   /* ============ TOP ============ */
   .top-section {
-    padding: 3% 5%;
+    padding: 3% 2.5%;             /* 左右 padding 由 5% 縮到 2.5%，寬咗 */
     text-align: center;
     position: relative;
     z-index: 2;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 6px;
+    gap: 7px;
   }
   .brand-row {
     display: flex;
@@ -56,7 +56,7 @@
     gap: 10px;
   }
   .brand-fg {
-    font-size: clamp(1.3rem, 5vw, 1.9rem);
+    font-size: clamp(1.5rem, 6vw, 2.2rem);   /* 由 1.3-1.9 → 1.5-2.2 字大咗 */
     font-weight: 800;
     color: #1F3864;
     letter-spacing: 1px;
@@ -64,12 +64,12 @@
   }
   .brand-divider {
     width: 1px;
-    height: 24px;
+    height: 28px;                              /* 由 24 → 28 配合更大字體 */
     background: #1F3864;
     opacity: 0.3;
   }
   .brand-zh {
-    font-size: clamp(0.78rem, 2.6vw, 0.95rem);
+    font-size: clamp(0.88rem, 3vw, 1.05rem);  /* 由 0.78-0.95 → 0.88-1.05 寬啲 */
     font-weight: 700;
     color: #1F3864;
     line-height: 1.15;
@@ -77,10 +77,10 @@
   }
   .brand-zh span {
     display: block;
-    font-size: clamp(0.6rem, 2vw, 0.72rem);
+    font-size: clamp(0.66rem, 2.2vw, 0.78rem);
     font-weight: 500;
     color: #2c5fa0;
-    margin-top: 1px;
+    margin-top: 2px;
   }
 
   .geo-pills {
@@ -165,11 +165,14 @@
     min-width: 90px;
   }
   .logo-img {
-    width: clamp(56px, 18vw, 72px);
-    height: clamp(56px, 18vw, 72px);
+    width: clamp(60px, 19vw, 78px);            /* 圓底 logo 可以大少少 */
+    height: clamp(60px, 19vw, 78px);
     object-fit: contain;
-    /* 純粹靠 PNG 自身透明度，唔再用 mix-blend-mode */
+    border-radius: 50%;                        /* 確保 mask 圓形 */
+    filter: drop-shadow(0 2px 6px rgba(31, 56, 100, 0.15));  /* subtle 浮起感 */
+    transition: transform 0.3s ease;
   }
+  .logo-item:hover .logo-img { transform: scale(1.06); }
   .logo-label {
     margin-top: 3px;
     color: #1F3864;
@@ -295,7 +298,7 @@
 
   <!-- ===== BOTTOM (25%) ===== -->
   <div class="bottom-section">
-    <div class="footer-tagline">長鴻控股 CHG · 專注新西蘭 · 多元板塊驅動卓越</div>
+    <div class="footer-tagline">長鴻控股 FGHK · 專注新西蘭 · 多元板塊驅動卓越</div>
     <div class="footer-urls">
       <a href="https://www.fghkholding.com" target="_blank">fghkholding.com</a> ·
       <a href="https://www.chgonz.com" target="_blank">chgonz.com</a> ·
