@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FG · 香港倉．亞洲集運中轉王</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang HK", "Noto Sans HK", "Microsoft JhengHei", sans-serif;
+    background: #0a2856;
+    padding: 20px 0;
+    color: #ffffff;
+  }
+  .feed { max-width: 480px; margin: 0 auto; padding: 0 12px; }
+  .slide {
+    aspect-ratio: 1 / 1;
+    border-radius: 22px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ============= SLIDE 1: HERO ============= */
+  .slide-1 {
+    background: linear-gradient(135deg, #0a2856 0%, #1F3864 50%, #2c5fa0 100%);
+    align-items: center;
+    justify-content: center;
+    padding: 8% 8%;
+    text-align: center;
+  }
+  .slide-1::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(circle at 80% 20%, rgba(201,169,94,0.18) 0%, transparent 40%),
+      radial-gradient(circle at 20% 80%, rgba(44,95,160,0.25) 0%, transparent 40%);
+  }
+  .slide-1 .fg-circle {
+    width: 110px; height: 110px;
+    border-radius: 50%;
+    background: #ffffff;
+    padding: 8px;
+    margin-bottom: 22px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    z-index: 1;
+  }
+  .slide-1 .fg-circle img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+  .slide-1 .hero-title {
+    font-size: 2.4rem;
+    font-weight: 900;
+    line-height: 1.15;
+    color: #C9A95E;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    z-index: 1;
+    margin-bottom: 12px;
+    letter-spacing: 1px;
+  }
+  .slide-1 .hero-sub {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #ffffff;
+    z-index: 1;
+    margin-bottom: 6px;
+  }
+  .slide-1 .hero-tag {
+    display: inline-block;
+    padding: 8px 22px;
+    background: #C9A95E;
+    color: #1F3864;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 800;
+    margin-top: 16px;
+    z-index: 1;
+    letter-spacing: 1px;
+  }
+
+  /* ============= SLIDE 2: 價錢 hook ============= */
+  .slide-2 {
+    background: linear-gradient(180deg, #DCE7F2 0%, #F4F8FC 100%);
+    color: #1F3864;
+    padding: 8% 7%;
+  }
+  .slide-2 .top-bar {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 14px;
+  }
+  .slide-2 .top-bar img { width: 42px; height: 42px; border-radius: 50%; background: #fff; padding: 3px; box-shadow: 0 2px 6px rgba(0,0,0,0.15); }
+  .slide-2 .top-bar .name { font-size: 0.92rem; font-weight: 700; color: #1F3864; }
+  .slide-2 .top-bar .name span { display: block; font-size: 0.7rem; color: #5a7ba8; font-weight: 500; }
+  .slide-2 h2 {
+    font-size: 1.85rem;
+    font-weight: 900;
+    line-height: 1.18;
+    margin-bottom: 14px;
+    color: #1F3864;
+  }
+  .slide-2 h2 span { color: #C9A95E; }
+  .slide-2 .price-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+  }
+  .slide-2 .price-card {
+    background: #ffffff;
+    border-radius: 14px;
+    padding: 13px 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(31,56,100,0.1);
+    border-left: 4px solid #1F3864;
+  }
+  .slide-2 .price-card.gold { border-left-color: #C9A95E; background: #FFFCF3; }
+  .slide-2 .price-card .lbl { font-size: 0.92rem; font-weight: 700; }
+  .slide-2 .price-card .lbl span { display: block; font-size: 0.66rem; color: #6c8db8; font-weight: 500; margin-top: 2px; }
+  .slide-2 .price-card .amt { font-size: 1.5rem; font-weight: 900; color: #1F3864; }
+  .slide-2 .price-card.gold .amt { color: #C9A95E; }
+
+  /* ============= SLIDE 3: 賣點 ============= */
+  .slide-3 {
+    background: linear-gradient(135deg, #1F3864 0%, #2c5fa0 100%);
+    padding: 8% 7%;
+    color: #ffffff;
+  }
+  .slide-3 .heading {
+    font-size: 1.55rem;
+    font-weight: 900;
+    color: #C9A95E;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  .slide-3 .sub-heading {
+    font-size: 0.92rem;
+    color: #d8e7ff;
+    margin-bottom: 26px;
+    line-height: 1.45;
+  }
+  .slide-3 .features { display: flex; flex-direction: column; gap: 14px; }
+  .slide-3 .feat {
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(4px);
+    border-left: 3px solid #C9A95E;
+    border-radius: 10px;
+    padding: 12px 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .slide-3 .feat .ico { font-size: 1.5rem; }
+  .slide-3 .feat .txt { font-size: 0.95rem; line-height: 1.35; flex: 1; }
+  .slide-3 .feat .txt b { color: #C9A95E; }
+
+  /* ============= SLIDE 4: 完整 slogan + CTA ============= */
+  .slide-4 {
+    background: linear-gradient(180deg, #C9A95E 0%, #b59551 100%);
+    padding: 8% 7%;
+    color: #1F3864;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+  }
+  .slide-4 .small-tag {
+    font-size: 0.75rem;
+    background: rgba(31,56,100,0.15);
+    color: #1F3864;
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .slide-4 .slogan-line {
+    font-size: 1.25rem;
+    font-weight: 800;
+    line-height: 1.45;
+    margin-bottom: 8px;
+  }
+  .slide-4 .slogan-line.big {
+    font-size: 1.55rem;
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    margin: 14px 0;
+  }
+  .slide-4 .cta-card {
+    background: #1F3864;
+    color: #ffffff;
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-top: 22px;
+    width: 100%;
+  }
+  .slide-4 .cta-card .label { font-size: 0.8rem; opacity: 0.8; margin-bottom: 4px; }
+  .slide-4 .cta-card .url { font-size: 1rem; font-weight: 800; color: #C9A95E; letter-spacing: 0.5px; }
+  .slide-4 .footer-info {
+    margin-top: 18px;
+    font-size: 0.66rem;
+    color: #5a3030;
+    line-height: 1.5;
+    opacity: 0.7;
+  }
+
+  /* Slide labels (for screenshot reference) */
+  .slide-label {
+    position: absolute; top: 10px; right: 14px;
+    background: rgba(0,0,0,0.4); color: #fff;
+    font-size: 0.6rem; padding: 3px 8px; border-radius: 999px;
+    font-weight: 700; letter-spacing: 0.5px;
+    z-index: 10;
+  }
+</style>
+</head>
+<body>
+
+<div class="feed">
+
+  <!-- ============== SLIDE 1: HERO ============== -->
+  <div class="slide slide-1">
+    <span class="slide-label">1 / 4</span>
+    <div class="fg-circle"><img src="logos/fg.png" alt="FG"></div>
+    <div class="hero-title">香港倉</div>
+    <div class="hero-title" style="font-size: 1.6rem;">亞洲集運中轉王</div>
+    <div class="hero-sub" style="margin-top:18px;">紐西蘭香港人 · 華人最啱用</div>
+    <div class="hero-tag">FG · 集運與轉運服務</div>
+  </div>
+
+  <!-- ============== SLIDE 2: 三個 hook 價 ============== -->
+  <div class="slide slide-2">
+    <span class="slide-label">2 / 4</span>
+    <div class="top-bar">
+      <img src="logos/fg.png" alt="FG">
+      <div class="name">Forever Gain HK<span>長鴻香港控股 · 集運與轉運</span></div>
+    </div>
+    <h2>主打<span>三個固定價</span><br>香港 → 紐西蘭</h2>
+
+    <div class="price-row">
+      <div class="price-card">
+        <div class="lbl">集運 · 1 kg<span>多件合運 · 4-7 天</span></div>
+        <div class="amt">$528.5</div>
+      </div>
+      <div class="price-card gold">
+        <div class="lbl">⭐ 快件 · 2 kg<span>特快直送 · 2-4 天</span></div>
+        <div class="amt">$520</div>
+      </div>
+      <div class="price-card">
+        <div class="lbl">集運 · 3 kg<span>多件合運 · 4-7 天</span></div>
+        <div class="amt">$816.18</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== SLIDE 3: 4 個賣點 ============== -->
+  <div class="slide slide-3">
+    <span class="slide-label">3 / 4</span>
+    <div class="heading">高單價人群<br>最最啱用</div>
+    <div class="sub-heading">海鮮乾貨．本地 HKTV．第三方平台高質貨<br>全部走專家快線，用我更穩陣</div>
+
+    <div class="features">
+      <div class="feat">
+        <div class="ico">🦐</div>
+        <div class="txt"><b>海鮮乾貨</b><br><span style="font-size:0.78rem;opacity:0.85;">家鄉味道．專家保鮮直送</span></div>
+      </div>
+      <div class="feat">
+        <div class="ico">🛒</div>
+        <div class="txt"><b>HKTV / 香港本地</b><br><span style="font-size:0.78rem;opacity:0.85;">買齊香港平台 · 一倉合運</span></div>
+      </div>
+      <div class="feat">
+        <div class="ico">📦</div>
+        <div class="txt"><b>第三方平台高質貨</b><br><span style="font-size:0.78rem;opacity:0.85;">淘寶 / Amazon / 朋友寄齊備</span></div>
+      </div>
+      <div class="feat">
+        <div class="ico">✈️</div>
+        <div class="txt"><b>專家快線</b><br><span style="font-size:0.78rem;opacity:0.85;">速度快 · 品質靚 · 服務穩</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============== SLIDE 4: SLOGAN + CTA ============== -->
+  <div class="slide slide-4">
+    <span class="slide-label">4 / 4</span>
+    <div class="small-tag">紐西蘭家鄉快線</div>
+    <div class="slogan-line">速度快</div>
+    <div class="slogan-line">品質靚</div>
+    <div class="slogan-line">服務穩</div>
+    <div class="slogan-line big">紐西蘭香港人嘅家鄉快線</div>
+    <div class="slogan-line big" style="font-size: 1.85rem;">就係香港倉</div>
+
+    <div class="cta-card">
+      <div class="label">即刻聯絡我哋</div>
+      <div class="url">fghkholding.com</div>
+    </div>
+
+    <div class="footer-info">
+      FG NZ Trade & Logistics Ltd<br>
+      NZBN 9429053403940 · MPI FIMP013439
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
