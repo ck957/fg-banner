@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FG · 香港倉．亞洲集運中轉王</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body {
+    width: 100%;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang HK", "Microsoft JhengHei", "Noto Sans HK", sans-serif;
+    background: transparent;
+  }
+
+  /* ============ Hero Container ============ */
+  .hero {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 19 / 10;       /* 大概 380 × 200，2kg banner 一半高 */
+    max-width: 1200px;
+    margin: 0 auto;
+    border-radius: 18px;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, #0a2856 0%, #1F3864 45%, #2c5fa0 100%);
+    color: #ffffff;
+    box-shadow: 0 6px 24px rgba(31, 56, 100, 0.35);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4% 5%;
+  }
+
+  /* 裝飾光點 */
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse at 85% 20%, rgba(201, 169, 94, 0.22) 0%, transparent 50%),
+      radial-gradient(ellipse at 15% 85%, rgba(44, 95, 160, 0.35) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, #C9A95E, transparent);
+  }
+
+  /* ============ TOP ROW: Logo + Title ============ */
+  .top-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 2;
+    position: relative;
+  }
+  .fg-logo {
+    width: clamp(40px, 11vw, 56px);
+    height: clamp(40px, 11vw, 56px);
+    border-radius: 50%;
+    background: #ffffff;
+    padding: 4px;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.25);
+    flex-shrink: 0;
+  }
+  .fg-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+
+  .title-block {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+  }
+  .title-main {
+    font-size: clamp(1.15rem, 5.5vw, 1.85rem);
+    font-weight: 900;
+    color: #C9A95E;
+    letter-spacing: 0.5px;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+  .title-sub {
+    font-size: clamp(0.74rem, 2.8vw, 0.95rem);
+    font-weight: 600;
+    color: #ffffff;
+    margin-top: 4px;
+    letter-spacing: 0.3px;
+    opacity: 0.95;
+  }
+
+  /* ============ KEYWORDS PILLS ============ */
+  .keywords {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: clamp(4px, 1.5vw, 10px) 0;
+    z-index: 2;
+    position: relative;
+  }
+  .keyword {
+    padding: 4px 12px;
+    background: rgba(201, 169, 94, 0.18);
+    border: 1px solid rgba(201, 169, 94, 0.55);
+    color: #FFD86F;
+    border-radius: 999px;
+    font-size: clamp(0.62rem, 2.1vw, 0.78rem);
+    font-weight: 700;
+    letter-spacing: 0.4px;
+    white-space: nowrap;
+  }
+
+  /* ============ BOTTOM TAGLINE ============ */
+  .bottom-row {
+    text-align: center;
+    z-index: 2;
+    position: relative;
+  }
+  .punch {
+    font-size: clamp(0.85rem, 3.2vw, 1.05rem);
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: 0.4px;
+  }
+  .punch-sub {
+    font-size: clamp(0.6rem, 2vw, 0.7rem);
+    color: #C9A95E;
+    margin-top: 2px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ============ DESKTOP RESPONSIVE ============ */
+  @media (min-width: 768px) {
+    .hero {
+      aspect-ratio: auto;
+      min-height: 180px;
+      max-height: 220px;
+      padding: 18px 32px;
+    }
+    .title-main { font-size: 1.85rem; }
+    .title-sub { font-size: 0.95rem; }
+    .keyword { font-size: 0.78rem; padding: 5px 14px; }
+    .punch { font-size: 1.05rem; }
+    .fg-logo { width: 56px; height: 56px; }
+  }
+
+  @media (min-width: 1200px) {
+    .hero { max-height: 200px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+
+  <!-- TOP ROW: Logo + Hook headline -->
+  <div class="top-row">
+    <div class="fg-logo">
+      <img src="logos/fg.png" alt="FG">
+    </div>
+    <div class="title-block">
+      <div class="title-main">香港倉．亞洲集運中轉王</div>
+      <div class="title-sub">紐西蘭香港人 · 華人社群最啱用</div>
+    </div>
+  </div>
+
+  <!-- KEYWORDS -->
+  <div class="keywords">
+    <span class="keyword"># 海鮮乾貨</span>
+    <span class="keyword"># HKTV</span>
+    <span class="keyword"># 第三方平台</span>
+    <span class="keyword"># 高質貨品</span>
+  </div>
+
+  <!-- BOTTOM PUNCH LINE -->
+  <div class="bottom-row">
+    <div class="punch">專家快線．更穩陣．速送到你手</div>
+    <div class="punch-sub">FG · TWO-WAY HK ↔ NZ FORWARDING NETWORK</div>
+  </div>
+
+</div>
+
+</body>
+</html>
