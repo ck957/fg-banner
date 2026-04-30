@@ -8,24 +8,23 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html, body {
     width: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
     font-family: -apple-system, BlinkMacSystemFont, "PingFang HK", "Microsoft JhengHei", "Noto Sans HK", sans-serif;
     background: transparent;
   }
 
-  /* ============ Container ============ */
+  /* ============ Container — Mobile default 1:1 ============ */
   .banner {
     position: relative;
     width: 100%;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1 / 1;       /* mobile default: square */
     max-width: 1200px;
     margin: 0 auto;
     background: linear-gradient(180deg, #C7D8EC 0%, #DDE8F4 50%, #ECF3FA 100%);
     border-radius: 18px;
     overflow: hidden;
     display: grid;
-    /* 用 grid 鎖死 3 個區域比例：top 30% / marquee 45% / bottom 25% */
-    grid-template-rows: 30% 45% 25%;
+    grid-template-rows: 30% 45% 25%;   /* mobile rows */
     box-shadow: 0 4px 20px rgba(31, 56, 100, 0.12);
   }
   .banner::before {
@@ -40,7 +39,7 @@
 
   /* ============ TOP ============ */
   .top-section {
-    padding: 3% 2.5%;             /* 左右 padding 由 5% 縮到 2.5%，寬咗 */
+    padding: 3% 2.5%;
     text-align: center;
     position: relative;
     z-index: 2;
@@ -56,20 +55,15 @@
     gap: 10px;
   }
   .brand-fg {
-    font-size: clamp(1.5rem, 6vw, 2.2rem);   /* 由 1.3-1.9 → 1.5-2.2 字大咗 */
+    font-size: clamp(1.5rem, 6vw, 2.2rem);
     font-weight: 800;
     color: #1F3864;
     letter-spacing: 1px;
     line-height: 1;
   }
-  .brand-divider {
-    width: 1px;
-    height: 28px;                              /* 由 24 → 28 配合更大字體 */
-    background: #1F3864;
-    opacity: 0.3;
-  }
+  .brand-divider { width: 1px; height: 28px; background: #1F3864; opacity: 0.3; }
   .brand-zh {
-    font-size: clamp(0.88rem, 3vw, 1.05rem);  /* 由 0.78-0.95 → 0.88-1.05 寬啲 */
+    font-size: clamp(0.88rem, 3vw, 1.05rem);
     font-weight: 700;
     color: #1F3864;
     line-height: 1.15;
@@ -83,12 +77,7 @@
     margin-top: 2px;
   }
 
-  .geo-pills {
-    display: flex;
-    justify-content: center;
-    gap: 5px;
-    flex-wrap: wrap;
-  }
+  .geo-pills { display: flex; justify-content: center; gap: 5px; flex-wrap: wrap; }
   .pill {
     padding: 2px 9px;
     background: #1F3864;
@@ -165,11 +154,11 @@
     min-width: 90px;
   }
   .logo-img {
-    width: clamp(60px, 19vw, 78px);            /* 圓底 logo 可以大少少 */
+    width: clamp(60px, 19vw, 78px);
     height: clamp(60px, 19vw, 78px);
     object-fit: contain;
-    border-radius: 50%;                        /* 確保 mask 圓形 */
-    filter: drop-shadow(0 2px 6px rgba(31, 56, 100, 0.15));  /* subtle 浮起感 */
+    border-radius: 50%;
+    filter: drop-shadow(0 2px 6px rgba(31, 56, 100, 0.15));
     transition: transform 0.3s ease;
   }
   .logo-item:hover .logo-img { transform: scale(1.06); }
@@ -217,10 +206,50 @@
     letter-spacing: 0.3px;
     line-height: 1.2;
   }
-  .footer-urls a {
-    color: #2c5fa0;
-    text-decoration: none;
-    font-weight: 600;
+  .footer-urls a { color: #2c5fa0; text-decoration: none; font-weight: 600; }
+
+  /* ===========================================================
+     ★★★ DESKTOP / TABLET — 切換成寬條 banner 唔再正方形 ★★★
+     =========================================================== */
+  @media (min-width: 768px) {
+    .banner {
+      aspect-ratio: auto;          /* 取消 1:1 */
+      max-height: 320px;           /* desktop 固定矮 banner */
+      grid-template-rows: 38% 38% 24%;  /* top 大啲、marquee 矮啲 */
+    }
+    .top-section {
+      padding: 12px 24px 6px 24px;
+      gap: 8px;
+    }
+    .brand-fg { font-size: 1.8rem; }
+    .brand-divider { height: 26px; }
+    .brand-zh { font-size: 0.95rem; }
+    .brand-zh span { font-size: 0.72rem; }
+
+    .pill { font-size: 0.72rem; padding: 3px 12px; }
+
+    .tagline { font-size: 0.85rem; }
+    .tagline-en { font-size: 0.62rem; }
+
+    .marquee-section { padding: 4px 0; }
+    .logo-img { width: 56px; height: 56px; }
+    .logo-item { margin: 0 18px; min-width: 100px; }
+    .logo-label { font-size: 0.7rem; }
+    .logo-sublabel { font-size: 0.58rem; }
+
+    .bottom-section { padding: 8px 24px; }
+    .footer-tagline { font-size: 0.78rem; }
+    .footer-urls { font-size: 0.62rem; }
+  }
+
+  /* 大 desktop 1200+ 仲扁少少 */
+  @media (min-width: 1200px) {
+    .banner {
+      max-height: 280px;
+      grid-template-rows: 40% 36% 24%;
+    }
+    .logo-img { width: 50px; height: 50px; }
+    .logo-item { margin: 0 22px; min-width: 110px; }
   }
 </style>
 </head>
@@ -228,14 +257,14 @@
 
 <div class="banner">
 
-  <!-- ===== TOP (30%) ===== -->
+  <!-- ===== TOP ===== -->
   <div class="top-section">
     <div class="brand-row">
       <div class="brand-fg">FG</div>
       <div class="brand-divider"></div>
       <div class="brand-zh">
         Forever Gain HK
-        <span>長鴻香港控股</span>
+        <span>長鴻香港控股 · 集運與轉運服務</span>
       </div>
     </div>
 
@@ -249,7 +278,7 @@
     <div class="tagline-en">Two-Way Trade &amp; Logistics</div>
   </div>
 
-  <!-- ===== MARQUEE (45%) ===== -->
+  <!-- ===== MARQUEE ===== -->
   <div class="marquee-section">
     <div class="marquee">
       <div class="logo-item">
@@ -272,7 +301,7 @@
         <div class="logo-label">恩物 Thesaurus</div>
         <div class="logo-sublabel">海產直購</div>
       </div>
-      <!-- duplicate -->
+      <!-- 第二套（無縫循環） -->
       <div class="logo-item">
         <img class="logo-img" src="logos/fg.png" alt="FG">
         <div class="logo-label">Forever Gain</div>
@@ -296,7 +325,7 @@
     </div>
   </div>
 
-  <!-- ===== BOTTOM (25%) ===== -->
+  <!-- ===== BOTTOM ===== -->
   <div class="bottom-section">
     <div class="footer-tagline">長鴻控股 FGHK · 專注新西蘭 · 多元板塊驅動卓越</div>
     <div class="footer-urls">
